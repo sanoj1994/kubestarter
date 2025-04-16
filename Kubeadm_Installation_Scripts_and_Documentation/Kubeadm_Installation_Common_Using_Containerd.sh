@@ -5,6 +5,8 @@
 # 1. Disable Swap: Required for Kubernetes to function correctly.
 echo "Disabling swap..."
 sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
 sleep 2
 
 # 2. Load Necessary Kernel Modules: Required for Kubernetes networking.
